@@ -11,10 +11,9 @@ namespace Ebook1.Entity
         public int ID { get; set; }
         public string DepartmentName { get; set; }
 
-        [ForeignKey("DepartmentID")]
-        public ICollection<Lesson> Lessons { get; set; }
-       
-        public virtual Faculty Faculty { get; set; }
+
+        public virtual List<Lesson> Lessons { get; set; }
+
 
     }
 }

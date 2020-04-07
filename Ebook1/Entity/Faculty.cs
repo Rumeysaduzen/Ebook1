@@ -10,8 +10,8 @@ namespace Ebook1.Entity
     {
         public int ID { get; set; }
         public string FacultyName { get; set; }
-    
-        public virtual List<Department> Departments { get; set; }
+
+      
 
     }
 }

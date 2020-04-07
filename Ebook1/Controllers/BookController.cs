@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace Ebook1.Controllers
 {
-    public class BookAddController : Controller
+    public class BookAController : Controller
     {
         // GET: BookAdd
-        public ActionResult BookAdd1()
+        public ActionResult Book1()
         {
             return View();
         }

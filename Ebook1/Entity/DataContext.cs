@@ -8,11 +8,11 @@ namespace Ebook1.Entity
 {
     public class DataContext:DbContext
     {
-        public DataContext():base("dataConnection")
+        public DataContext(): base("dataConnection")
         {
             Database.SetInitializer(new DataInitializer());
         }
-        public DbSet<Faculty> Faculties { get; set; }
+     
         public DbSet<Department> Departments { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Book> Books { get; set; }
