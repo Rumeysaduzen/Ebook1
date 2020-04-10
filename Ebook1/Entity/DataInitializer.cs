@@ -45,7 +45,7 @@ namespace Ebook1.Entity
 
             var books = new List<Book>
             {
-                new Book() { BookName="BMG ", Comment="bmg Kitabı", Price=30,Image="book.jpg", LessonID=1,   },
+                new Book() { BookName="BMG ", Comment="bmg Kitabı", Price=30, Image="book.jpg", LessonID=1,   },
             };
             foreach (var item in books)
             {

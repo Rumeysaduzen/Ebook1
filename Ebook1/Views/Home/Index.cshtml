@@ -1,7 +1,7 @@
 ﻿@using Ebook1.Entity
 @model IEnumerable<Book>
 @{
-    ViewBag.Title = "Index";
+    Layout = null;
 }
 <!DOCTYPE html>
 <html lang="zxx">
@@ -65,7 +65,7 @@
                                 <i class="flaticon-profile"></i>
                                 <a href="@Url.RouteUrl("Login")">Giriş</a>ya da <a href="#">Hesap Oluştur</a>
                             </div>
-                      
+
 
                             <div class="up-item">
                                 <div class="shopping-card">
@@ -124,7 +124,7 @@
                             <li><a href="./contact.html">Görsel Programlama</a></li>
                         </ul>
                     </li>
-                  
+
                 </ul>
             </div>
         </nav>
@@ -199,13 +199,13 @@
             <div class="section-title">
                 <h2>LATEST PRODUCTS</h2>
             </div>
-          <div class="product-slider owl-carousel">
+            <div class="product-slider owl-carousel">
                 @foreach (var item in Model)
                 {
                     <div class="product-item">
                         <div class="pi-pic">
                             <a href="/Department/BookDetails/@item.ID">
-                                <img src="~/Content/img/@item.Image" /> alt="">
+                                <img src="~/Content/img/@item.Image" />
                             </a>
                             <div class="pi-links">
                                 <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
@@ -214,7 +214,8 @@
                         </div>
                         <div class="pi-text">
                             <h6> <a href="/Department/BookDetails/@item.ID">@item.Price</h6>
-                            <p>@item.BookName</p>
+                            <p>@item.BookName - @item.Comment </p>
+                            <p></p>
                         </div>
                     </div>
                 }
@@ -308,27 +309,27 @@
                         </div>
                     </div>
                 </div>
-                @*@foreach (var item in Model)
-                {
+                @foreach (var item in Model)
+                        {
 
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <div class="tag-sale">ON SALE</div>
-                        <img src="./img/product/6.jpg" alt="">
-                        <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <div class="tag-sale">ON SALE</div>
+                                <img src="./img/product/6.jpg" alt="">
+                                <div class="pi-links">
+                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>@item.Price</h6>
+                                <p>@item.BookName</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="pi-text">
-                        <h6>@item.Price</h6>
-                        <p>@item.BookName</p>
-                    </div>
-                </div>
-            </div>
-                }*@
-                
+                        }
+
                 <div class="col-lg-3 col-sm-6">
                     <div class="product-item">
                         <div class="pi-pic">

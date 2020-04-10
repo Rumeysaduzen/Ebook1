@@ -12,7 +12,7 @@ namespace Ebook1.Entity
         public string LessonName { get; set; }
 
         
-        public virtual  List<Book> books { get; set; }
+        public virtual  List<Book> Books { get; set; }
         public int DepartmanID { get; set; }
 
         public virtual Department Department { get; set; }
