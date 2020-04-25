@@ -1,5 +1,5 @@
-﻿@using Ebook1.Entity
-@model IEnumerable<Book>
+﻿@model IEnumerable<Ebook1.Models.Lesson>
+
 @{
     Layout = null;
 }
@@ -63,7 +63,7 @@
                         <div class="user-panel">
                             <div class="up-item">
                                 <i class="flaticon-profile"></i>
-                                <a href="@Url.RouteUrl("Login")">Giriş</a>ya da <a href="#">Hesap Oluştur</a>
+                                <a href="@Url.RouteUrl("LoginG")">Giriş Yap</a>
                             </div>
 
 
@@ -87,47 +87,45 @@
                     <li>
                         <a href="@Url.RouteUrl("Department1")">Bilgisayar Mühendisliği</a>
                         <ul class="sub-menu">
-                            <li><a href="#">C İle Programlama</a></li>
-                            <li><a href="#">Bilgisayar Mühendisliğine Giriş</a></li>
-                            <li><a href="#">Veri Tabanı Yönetim Sistemi</a></li>
-                            <li><a href="#">Programlama Dillerine Giriş</a></li>
-                            <li><a href="#">Görsel Programlama</a></li>
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="@Url.RouteUrl("Product", new {@item.ID })">@item.LessonName</a></li>
+                            }
+
                         </ul>
                     </li>
                     <li>
                         <a href="@Url.RouteUrl("Department1")">Elektrik Elektronik Mühendisliği</a>
                         <ul class="sub-menu">
-                            <li><a href="#">Görsel Programlama</a></li>
-                            <li><a href="#">Görsel Programlama</a></li>
-                            <li><a href="#">Görsel Programlama </a></li>
-                            <li><a href="#">Görsel Programlama </a></li>
-                            <li><a href="#">Görsel Programlama</a></li>
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="@Url.RouteUrl("Product", new {@item.ID })">@item.LessonName</a></li>
+                            }
                         </ul>
                     </li>
                     <li>
                         <a href="@Url.RouteUrl("Department1")">Gıda Mühendisliği</a>
                         <ul class="sub-menu">
-                            <li><a href="./product.html">Görsel Programlama</a></li>
-                            <li><a href="./category.html">Görsel Programlama</a></li>
-                            <li><a href="./cart.html">Görsel Programlama</a></li>
-                            <li><a href="./checkout.html">Görsel Programlama</a></li>
-                            <li><a href="./contact.html">Görsel Programlama</a></li>
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="@Url.RouteUrl("Product", new {@item.ID })">@item.LessonName</a></li>
+                            }
                         </ul>
                     </li>
                     <li>
                         <a href="@Url.RouteUrl("Department1")">Makine Mühendisliği</a>
                         <ul class="sub-menu">
-                            <li><a href="./product.html">Görsel Programlama</a></li>
-                            <li><a href="./category.html">Görsel Programlama</a></li>
-                            <li><a href="./cart.html">Görsel Programlama</a></li>
-                            <li><a href="./checkout.html">Görsel Programlama</a></li>
-                            <li><a href="./contact.html">Görsel Programlama</a></li>
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="@Url.RouteUrl("Product", new {@item.ID })">@item.LessonName</a></li>
+                            }
                         </ul>
                     </li>
 
                 </ul>
             </div>
         </nav>
+        
     </header>
     <!-- Header section end -->
     <!-- Hero section -->
@@ -170,7 +168,7 @@
                         <div class="feature-icon">
                             <img src="~/Content/img/front-view-pile-books-with-copy-space_23-2148255858.jpg" />
                         </div>
-                        <h2>Fast Secure Payments</h2>
+                        <h2>En Çok Satılanlar</h2>
                     </div>
                 </div>
                 <div class="col-md-4 p-0 feature">
@@ -178,7 +176,7 @@
                         <div class="feature-icon">
                             <img src="~/Content/img/front-view-pile-books-with-copy-space_23-2148255812.jpg" />
                         </div>
-                        <h2>Premium Products</h2>
+                        <h2>En İndirimli Kitaplar</h2>
                     </div>
                 </div>
                 <div class="col-md-4 p-0 feature">
@@ -186,7 +184,7 @@
                         <div class="feature-icon">
                             <img src="~/Content/img/stack-books-library-desk_23-2147845946.jpg" />
                         </div>
-                        <h2>Free & fast Delivery</h2>
+                        <h2>Hiç Kullanılmamış Kitaplar</h2>
                     </div>
                 </div>
             </div>
@@ -197,10 +195,10 @@
     <section class="top-letest-product-section">
         <div class="container">
             <div class="section-title">
-                <h2>LATEST PRODUCTS</h2>
+                <h2>En Çok Yorum Alanlar</h2>
             </div>
             <div class="product-slider owl-carousel">
-                @foreach (var item in Model)
+                @*@foreach (var item in Model)
                 {
                     <div class="product-item">
                         <div class="pi-pic">
@@ -218,59 +216,59 @@
                             <p></p>
                         </div>
                     </div>
-                }
+                }*@
 
                 <div class="product-item">
                     <div class="pi-pic">
                         <div class="tag-new">New</div>
                         <a href="/Department/BookDetails/"></a> <img src="./img/product/2.jpg" alt="">
                         <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span></span></a>
                             <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                         </div>
                     </div>
                     <div class="pi-text">
-                        <h6>$35,00</h6>
-                        <p>Black and White Stripes Dress</p>
+                        <h6>35,00</h6>
+                        <p>Mimari</p>
                     </div>
                 </div>
                 <div class="product-item">
                     <div class="pi-pic">
                         <img src="./img/product/3.jpg" alt="">
                         <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span></span></a>
                             <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                         </div>
                     </div>
                     <div class="pi-text">
-                        <h6>$35,00</h6>
-                        <p>Flamboyant Pink Top </p>
+                        <h6>35,00</h6>
+                        <p>İstatik </p>
                     </div>
                 </div>
                 <div class="product-item">
                     <div class="pi-pic">
                         <img src="./img/product/4.jpg" alt="">
                         <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span></span></a>
                             <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                         </div>
                     </div>
                     <div class="pi-text">
-                        <h6>$35,00</h6>
-                        <p>Flamboyant Pink Top </p>
+                        <h6>35,00</h6>
+                        <p>Elektrik Devre temelleri </p>
                     </div>
                 </div>
                 <div class="product-item">
                     <div class="pi-pic">
                         <img src="./img/product/6.jpg" alt="">
                         <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span></span></a>
                             <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                         </div>
                     </div>
                     <div class="pi-text">
-                        <h6>$35,00</h6>
-                        <p>Flamboyant Pink Top </p>
+                        <h6>35,00</h6>
+                        <p> Matematik </p>
                     </div>
                 </div>
             </div>
@@ -281,36 +279,33 @@
     <section class="product-filter-section">
         <div class="container">
             <div class="section-title">
-                <h2>BROWSE TOP SELLING PRODUCTS</h2>
+                <h2>Bilgisayar Mühendisliği</h2>
             </div>
             <ul class="product-filter-menu">
-                <li><a href="#">TOPS</a></li>
-                <li><a href="#">JUMPSUITS</a></li>
-                <li><a href="#">LINGERIE</a></li>
-                <li><a href="#">JEANS</a></li>
-                <li><a href="#">DRESSES</a></li>
-                <li><a href="#">COATS</a></li>
-                <li><a href="#">JUMPERS</a></li>
-                <li><a href="#">LEGGINGS</a></li>
+                <li><a href="#">C ile programlama</a></li>
+                <li><a href="#">Bilgisayar Mimarisi</a></li>
+                <li><a href="#">Sayısal Sistem Tasarımı</a></li>
+                <li><a href="#">Web Programlama</a></li>
+            
             </ul>
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
+                @*<div class="col-lg-3 col-sm-6">
                     <div class="product-item">
                         <div class="pi-pic">
                             <img src="./img/product/5.jpg" alt="">
                             <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span></span></a>
                                 <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                             </div>
                         </div>
                         <div class="pi-text">
-                            <h6>$35,00</h6>
-                            <p>Flamboyant Pink Top </p>
+                            <h6>35,00</h6>
+                            <p></p>
                         </div>
                     </div>
-                </div>
-                @foreach (var item in Model)
-                        {
+                </div>*@
+                @*@foreach (var item in Model)
+                {
 
                     <div class="col-lg-3 col-sm-6">
                         <div class="product-item">
@@ -328,9 +323,9 @@
                             </div>
                         </div>
                     </div>
-                        }
+                }*@
 
-                <div class="col-lg-3 col-sm-6">
+                @*<div class="col-lg-3 col-sm-6">
                     <div class="product-item">
                         <div class="pi-pic">
                             <img src="./img/product/7.jpg" alt="">
@@ -424,7 +419,7 @@
             <div class="text-center pt-5">
                 <button class="site-btn sb-line sb-dark">LOAD MORE</button>
             </div>
-        </div>
+        </div>*@
     </section>
     <!-- Product filter section end -->
     <!-- Banner section -->
@@ -432,9 +427,9 @@
         <div class="container">
             <div class="banner set-bg" data-setbg="img/banner-bg.jpg">
                 <div class="tag-new">NEW</div>
-                <span>New Arrivals</span>
-                <h2>STRIPED SHIRTS</h2>
-                <a href="#" class="site-btn">SHOP NOW</a>
+                <span>Yeni Eklendi</span>
+                <h2>BMG</h2>
+                <a href="#" class="site-btn">Kitabı Ayır!</a>
             </div>
         </div>
     </section>

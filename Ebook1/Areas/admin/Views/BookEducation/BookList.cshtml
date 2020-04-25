@@ -1,0 +1,40 @@
+﻿@using Ebook1.Models
+
+@model List <Book>
+    @{
+    ViewBag.Title = "BookList";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<a class="btn btn-success" href="@Url.RouteUrl("BookAddAdmin")">Yeni Kitap</a>
+<h2>
+    Kitap  Listesi
+</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Açıklama</th>
+            <th>Fiyat</th>
+            <th>Resim</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Book in Model)
+        {
+        <tr>
+            <td>@Book.ID</td>
+            <td>@Book.BookName</td>
+            <td>@Book.Comment</td>
+            <td>@Book.Price</td>
+            <td>@Book.Image</td>
+            <td><a class="btn btn-primary" href="@Url.Action("BookAddAdmin", new { Book.ID })">Güncelle </a></td>
+            <td><a class="btn btn-primary" href="@Url.Action("DeleteLesson", new { Book.ID })">Sil </a></td>
+
+        </tr>
+        }
+    </tbody>
+</table>

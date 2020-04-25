@@ -1,4 +1,4 @@
-﻿using Ebook1.Entity;
+﻿using Ebook1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,15 @@ namespace Ebook1.Controllers
 {
     public class HomeController : Controller
     {
-        DataContext db = new DataContext();
+        Ebook1Context db = new Ebook1Context();
         // GET: Home
         public ActionResult Index()
         {
-            return View(db.Books.ToList());
+            {
+                var product = db.Lesson.ToList();
+                return View(product);
+            }
         }
+
     }
 }

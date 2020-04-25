@@ -1,0 +1,73 @@
+﻿@model Ebook1.Models.Book
+
+@{
+    ViewBag.Title = "EditBook";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Kitap <small>Kitap İçeriğinin Eklenmesi</small></h2>
+
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="clearfix"></div>
+
+        @Html.Raw(@ViewBag.Message)
+        @using (Html.BeginForm("EditBook", "BookList", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="x_content">
+        <br />
+
+
+
+
+        <div class="clearfix"></div>
+        <br />
+        <div class="form-group">
+
+            @Html.HiddenFor(model => model.ID)
+        </div>
+
+        <div class="form-group">
+            <label>Kitap Adı</label>
+            @Html.EditorFor(model => model.BookName)
+            @Html.ValidationMessageFor(model => model.BookName)
+        </div>
+
+        <div class="form-group">
+            <label>Kitap Açıklaması</label>
+            @Html.EditorFor(model => model.Comment)
+            @Html.ValidationMessageFor(model => model.Comment)
+        </div>
+        <div class="form-group">
+            <label>Kitap Fiyatı</label>
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+        <div class="form-group">
+            <label>Kitap Resmi</label>
+            @Html.EditorFor(model => model.Image)
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+
+
+
+        <br />
+      
+        <div class="col-md-6 col-sm-6 col-xs-12"> <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"> </div>
+        <button type="submit" class="btn btn-success">Ekle</button>
+
+    </div>
+        }
+
+        <br />
+        <br />
+    </div>
+
+</div>

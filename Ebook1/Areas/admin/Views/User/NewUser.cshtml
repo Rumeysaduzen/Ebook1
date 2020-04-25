@@ -1,0 +1,44 @@
+﻿@model Ebook1.Models.User
+
+
+
+
+@{
+    ViewBag.Title = "NewUser";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+
+
+                <div class="form-group">
+
+                    <label>Adı</label> @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+
+                    <label>Soyadı</label> @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>E-Mail</label> @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                </div>
+
+                <div>
+                    <label>Password</label> @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                </div>
+
+                <input type="submit" value="Gönder" class="btn btn-outline-primary" />
+            }
+        </div>
+    </div>
+</div>
+

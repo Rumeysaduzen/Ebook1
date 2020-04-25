@@ -1,0 +1,88 @@
+﻿@using Ebook1.Models
+
+@model List<Book>
+
+@{
+    ViewBag.Title = "BookAddAdmin";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-6 col-sm-6 col-xs-6"
+     style="margin: 0 auto;">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Kitap Ekle <small></small></h2>
+
+            <div class="clearfix"></div>
+        </div>
+
+
+        @Html.Raw(@ViewBag.Message)
+        @*@using (Html.BeginForm("NewSubject", "Subject1", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()*@
+
+        <div class="x_content">
+            <br />
+
+            <form action="/BookAddAdmin" method="post" enctype="multipart/form-data">
+
+
+
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LessonName">
+                    Ders Adı <span class="required">:</span>
+
+
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select id="UserId" name="UserName" class="form-control">
+                            @foreach (var item in ViewBag.Book)
+                            {
+                                <option value="@item.ID">@item.LessonName</option>
+                            }
+
+                        </select>
+                    </div>
+
+                </label>
+
+
+                <div class="form-group">
+                    <label>Kitap Adı</label>
+                    <input type="text" name="BookName" class="form-control" />
+                </div>
+
+
+                <div class="form-group">
+                    <label>Kitap Açıklaması</label>
+                    <input type="text" name="Comment" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Kitap Fiyatı</label>
+                    <input type="text" name="Price" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Kitap Görseli</label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        Resim Ekleyiniz
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="file" name="PostedFile" value="" accept="image/*" />
+                    </div>
+                </div>
+                <br /><br />
+                <hr />
+
+                <br />
+
+                <button type="submit" class="btn btn-success" href="@Url.RouteUrl("BookAdd1")">Ekle</button>
+            </form>
+        </div>
+
+
+        <br />
+        <br />
+    </div>
+
+</div>
+

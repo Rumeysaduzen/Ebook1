@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Ebook1.Models.User> 
+
+
+
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<a class="btn btn-success" href="@Url.RouteUrl("NewUser")">Yeni Kullanıcı</a>
+<h2>
+    Kullanıcı Listesi
+</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Mail</th>
+            <th>Şifre</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var User in Model)
+        {
+            <tr>
+                <td>@User.ID</td>
+                <td>@User.Name</td>
+                <td>@User.Surname</td>
+                <td>@User.Email</td>
+                <td>@User.Password</td>
+                <td><a class="btn btn-primary" href="@Url.Action("EditUser", new { User.ID })">Güncelle </a></td>
+                <td><a class="btn btn-primary" href="@Url.Action("DeleteUser", new { User.ID })">Sil </a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@foreach (var user in Model)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">@user.Name</div>
+            <div class="col-md-4">@user.Email</div>
+            <div class="col-md-4">@user.IsManager</div>
+        </div>
+    </div>
+
+}
+
