@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df2b5b5870bb4ea68c57992f3939f6fc" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="EBook1DbModel.Book" Width="1.5" PointX="10" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EBook1DbModel.Department" Width="1.5" PointX="4.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="EBook1DbModel.Lesson" Width="1.5" PointX="7.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EBook1DbModel.Role" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EBook1DbModel.sysdiagrams" Width="1.5" PointX="10" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EBook1DbModel.User" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EBook1DbModel.UserAndDepartment" Width="1.5" PointX="4.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EBook1DbModel.UserAndRole" Width="1.5" PointX="6.5" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="EBook1DbModel.FK_Book_Lesson" ManuallyRouted="false" />
+        <AssociationConnector Association="EBook1DbModel.FK_Lesson_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="EBook1DbModel.FK_UserAndDepartment_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="EBook1DbModel.FK_UserAndRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="EBook1DbModel.FK_UserAndDepartment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EBook1DbModel.FK_UserAndRole_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

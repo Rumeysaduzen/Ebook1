@@ -137,6 +137,7 @@
     <Content Include="Areas\admin\Content\build\js\custom.js" />
     <Content Include="Areas\admin\Content\build\js\custom.min.js" />
     <Content Include="Areas\admin\Content\css\maps\jquery-jvectormap-2.0.3.css" />
+    <Content Include="Areas\admin\Content\images\hasankayra.jpeg" />
     <Content Include="Areas\admin\Content\images\american-express.png" />
     <Content Include="Areas\admin\Content\images\cropper.jpg" />
     <Content Include="Areas\admin\Content\images\favicon.ico" />
@@ -2084,6 +2085,16 @@
     <Content Include="Content\vendor\select2\select2.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Ebook1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Ebook1.edmx</DependentUpon>
+      <LastGenOutput>Ebook1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Ebook1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Ebook1.edmx</DependentUpon>
+      <LastGenOutput>Ebook1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
@@ -2415,6 +2426,14 @@
     <Content Include="Areas\admin\Views\BookEducation\EditBook.cshtml" />
     <Content Include="Areas\admin\Views\User\UserList.cshtml" />
     <Content Include="Areas\admin\Views\User\NewUser.cshtml" />
+    <EntityDeploy Include="Models\Ebook1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Ebook1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Ebook1.edmx.diagram">
+      <DependentUpon>Ebook1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\admin\Views\User\EditUser.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2443,14 +2462,45 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Insfracture\MyRoleProvider.cs" />
-    <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\C__MigrationHistory.cs" />
-    <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\Ebook1Context.cs" />
-    <Compile Include="Models\Lesson.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserAndRole.cs" />
+    <Compile Include="Models\Book.cs">
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ebook1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ebook1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ebook1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ebook1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ebook1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lesson.cs">
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserAndDepartment.cs">
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserAndRole.cs">
+      <DependentUpon>Ebook1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2483,6 +2533,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Areas\admin\Content\vendors\moment\moment.d.ts" />

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EBook1DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="LessonID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Lesson" Relationship="Self.FK_Book_Lesson" FromRole="Book" ToRole="Lesson" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Lesson" Relationship="Self.FK_Lesson_Department" FromRole="Department" ToRole="Lesson" />
+    <NavigationProperty Name="UserAndDepartment" Relationship="Self.FK_UserAndDepartment_Department" FromRole="Department" ToRole="UserAndDepartment" />
+  </EntityType>
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LessonName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Book" Relationship="Self.FK_Book_Lesson" FromRole="Lesson" ToRole="Book" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Lesson_Department" FromRole="Lesson" ToRole="Department" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserAndRole" Relationship="Self.FK_UserAndRole_Role" FromRole="Role" ToRole="UserAndRole" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="IsManager" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserAndDepartment" Relationship="Self.FK_UserAndDepartment_User" FromRole="User" ToRole="UserAndDepartment" />
+    <NavigationProperty Name="UserAndRole" Relationship="Self.FK_UserAndRole_User" FromRole="User" ToRole="UserAndRole" />
+  </EntityType>
+  <EntityType Name="UserAndDepartment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_UserAndDepartment_Department" FromRole="UserAndDepartment" ToRole="Department" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserAndDepartment_User" FromRole="UserAndDepartment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserAndRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role_id" Type="Int32" Nullable="false" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="Role_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_UserAndRole_Role" FromRole="UserAndRole" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserAndRole_User" FromRole="UserAndRole" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Book_Lesson">
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lesson">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="LessonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lesson_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lesson">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAndDepartment_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="UserAndDepartment" Type="Self.UserAndDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAndDepartment">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAndRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserAndRole" Type="Self.UserAndRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserAndRole">
+        <PropertyRef Name="Role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAndDepartment_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserAndDepartment" Type="Self.UserAndDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAndDepartment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAndRole_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserAndRole" Type="Self.UserAndRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAndRole">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EBook1DbEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Book" EntityType="Self.Book" />
+    <EntitySet Name="Department" EntityType="Self.Department" />
+    <EntitySet Name="Lesson" EntityType="Self.Lesson" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="UserAndDepartment" EntityType="Self.UserAndDepartment" />
+    <EntitySet Name="UserAndRole" EntityType="Self.UserAndRole" />
+    <AssociationSet Name="FK_Book_Lesson" Association="Self.FK_Book_Lesson">
+      <End Role="Lesson" EntitySet="Lesson" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lesson_Department" Association="Self.FK_Lesson_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Lesson" EntitySet="Lesson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAndDepartment_Department" Association="Self.FK_UserAndDepartment_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="UserAndDepartment" EntitySet="UserAndDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAndRole_Role" Association="Self.FK_UserAndRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserAndRole" EntitySet="UserAndRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAndDepartment_User" Association="Self.FK_UserAndDepartment_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAndDepartment" EntitySet="UserAndDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAndRole_User" Association="Self.FK_UserAndRole_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAndRole" EntitySet="UserAndRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -12,15 +12,13 @@ namespace Ebook1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Book
+    public partial class UserAndDepartment
     {
         public int ID { get; set; }
-        public string BookName { get; set; }
-        public string Comment { get; set; }
-        public byte[] Image { get; set; }
-        public Nullable<double> Price { get; set; }
-        public int LessonID { get; set; }
+        public int UserId { get; set; }
+        public int DepartmentId { get; set; }
     
-        public virtual Lesson Lesson { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual User User { get; set; }
     }
 }

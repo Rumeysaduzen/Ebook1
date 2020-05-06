@@ -38,7 +38,7 @@ namespace Ebook1.Insfracture
 
         public override string[] GetRolesForUser(string username)
         {
-            using (Ebook1Context objContext = new Ebook1Context())
+            using (EBook1DbEntities2 objContext = new EBook1DbEntities2())
             {
                 var objUser = objContext.User.FirstOrDefault(x => x.Email == Name);
 
@@ -51,7 +51,7 @@ namespace Ebook1.Insfracture
                     //var roleid = objContext.UserAndRoles.FirstOrDefault(x => x.UserId == objUser.ID).RoleId;
                     //int Role_id = Convert.ToInt32(roleid);
 
-                    string[] ret = objContext.UserAndRole.Where(x => x.user_id == objUser.ID).Select(x => x.role_name).ToArray();
+                    string[] ret = objContext.UserAndRole.Where(x => x.User_id == objUser.ID).Select(x => x.Role_name).ToArray();
 
                     return ret;
                 }

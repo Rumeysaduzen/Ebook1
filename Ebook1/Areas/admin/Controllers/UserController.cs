@@ -10,11 +10,11 @@ namespace Ebook1.Areas.admin.Controllers
     public class UserController : Controller
     {
 
-        Ebook1Context db = new Ebook1Context();
+        EBook1DbEntities2 db = new EBook1DbEntities2();
         // GET: admin/User
         public ActionResult UserList()
         {
-            Ebook1Context user = new Ebook1Context();
+            EBook1DbEntities2 user = new EBook1DbEntities2();
             return View(user.User.ToList());
 
 
@@ -57,9 +57,9 @@ namespace Ebook1.Areas.admin.Controllers
 
             UserAndRole role = new UserAndRole();
             var user = db.User.FirstOrDefault(x => x.Email == MailUser);
-            role.role_id = 1;
-            role.user_id = user.ID;
-            role.role_name = "Admin";
+            role.Role_id = 1;
+            role.User_id = user.ID;
+            role.Role_name = "Admin";
             db.UserAndRole.Add(role);
             db.SaveChanges();
 
@@ -82,7 +82,7 @@ namespace Ebook1.Areas.admin.Controllers
             var user = db.User.FirstOrDefault(x => x.ID == id);
             user.IsManager = IsManager;
             db.SaveChanges();
-            return RedirectToRoute("User");
+            return RedirectToRoute("UserList");
 
         }
         public ActionResult DeleteUser(User user)
@@ -101,8 +101,8 @@ namespace Ebook1.Areas.admin.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("User");
+            return RedirectToAction("UserList");
         }
-        // GET: Admin/Firm
+
     }
 }

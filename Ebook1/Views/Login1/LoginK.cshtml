@@ -1,125 +1,77 @@
 ﻿@model Ebook1.Models.User
 
+
 @{
     ViewBag.Title = "LoginK";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
+
 <html lang="en">
-<head>
-    <title>Login V11</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-    <!--===============================================================================================-->
-
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
-    <!--===============================================================================================-->
-
-    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
-    <!--===============================================================================================-->
-
-    <link href="~/fonts/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" rel="stylesheet" />
-    <!--===============================================================================================-->
-
-    <link href="~/Content/vendor/animate/animate.css" rel="stylesheet" />
-    <!--===============================================================================================-->
-
-    <link href="~/Content/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" />
-
-    <!--===============================================================================================-->
-
-    <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" />
-    <!--===============================================================================================-->
-
-    <link href="~/Content/css/css/util.css" rel="stylesheet" />
-
-    <link href="~/Content/css/css/main.css" rel="stylesheet" />
-    <!--===============================================================================================-->
-</head>
 <body>
-
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-                <form class="login100-form validate-form">
+               
                     <span class="login100-form-title p-b-55">
                         Kayıt Ol
                     </span>
+                    @using (Html.BeginForm("LoginK", "Login1", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="wrap-input100 validate-input m-b-16">
+                            @Html.LabelFor(m => m.Name)
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Ad">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <span class="lnr lnr-envelope"></span>
-                        </span>
-                    </div>
+                            </span>
+                        </div>
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Soyad">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <span class="lnr lnr-lock"></span>
-                        </span>
-                    </div>
+                        <div class="wrap-input100 validate-input m-b-16">
+                            @Html.LabelFor(m => m.Surname)
+                            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Surname" })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Fakülte">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <span class="lnr lnr-envelope"></span>
-                        </span>
-                    </div>
+                            </span>
+                        </div>
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Bölüm">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <span class="lnr lnr-lock"></span>
-                        </span>
-                    </div>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Mail">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <span class="lnr lnr-envelope"></span>
-                        </span>
-                    </div>
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
+                            @Html.LabelFor(m => m.Email)
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <span class="lnr lnr-envelope"></span>
+                            </span>
+                        </div>
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Şifre">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <span class="lnr lnr-lock"></span>
-                        </span>
-                    </div>
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <span class="lnr lnr-lock"></span>
+                            </span>
+                        </div>
 
-                    <div class="container-login100-form-btn p-t-25">
-                        <button class="login100-form-btn">
-                            Kayıt Ol
-                        </button>
-                    </div>
-
-                    <div class="text-center w-full p-t-42 p-b-22">
-                        <span class="txt1">
-
-                        </span>
-                    </div>
+                        <button type="submit" class="btn btn-success" href="@Url.RouteUrl("LoginG")">Kayıt Ol</button>
 
 
 
-                    <div class="text-center w-full p-t-115">
-                        <span class="txt1">
+                    }
 
-                        </span>
+                        <div class="text-center w-full p-t-115">
+                            <span class="txt1">
 
-                        <a class="txt1 bo1 hov1" href="#">
+                            </span>
 
-                        </a>
-                    </div>
-                </form>
+                            <a class="txt1 bo1 hov1" href="#">
+
+                            </a>
+                        </div>
+
+              
             </div>
 
 
@@ -127,7 +79,38 @@
 
     </div>
 
+    <head>
+       
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+        <!--===============================================================================================-->
 
+        <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+
+        <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+
+        <link href="~/fonts/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+
+        <link href="~/Content/vendor/animate/animate.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+
+        <link href="~/Content/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" />
+
+        <!--===============================================================================================-->
+
+        <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+
+        <link href="~/Content/css/css/util.css" rel="stylesheet" />
+
+        <link href="~/Content/css/css/main.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+    </head>
 
 
     <!--===============================================================================================-->

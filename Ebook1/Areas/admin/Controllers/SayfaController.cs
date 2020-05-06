@@ -8,7 +8,7 @@ namespace Ebook1.Areas.admin.Controllers
 {
     public class SayfaController : Controller
     {
-     
+      [Authorize]
         public ActionResult Anasayfa()
         {
             return View();

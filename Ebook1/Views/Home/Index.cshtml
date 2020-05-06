@@ -61,10 +61,31 @@
                     </div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="user-panel">
-                            <div class="up-item">
-                                <i class="flaticon-profile"></i>
-                                <a href="@Url.RouteUrl("LoginG")">Giriş Yap</a>
-                            </div>
+                            @if (!(User.Identity.IsAuthenticated))
+                            {
+                                <div class="up-item">
+                                    <i class="flaticon-profile"></i>
+                                    <a href="@Url.RouteUrl("LoginG")">Giriş Yap</a>
+                                </div>
+                            }
+                      
+                            <li class="nav-item">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="nav-link" href="@Url.RouteUrl("Signout")" style="color:black;font-weight:bold;font-size:18px; font-family:'Segoe UI Symbol'">Çıkış Yap</a>
+                                }
+                            </li>
+                            <li class="nav-item">
+                                <form action="/Login1/LoginG" method="get">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a class="nav-link" href="@Url.RouteUrl("Admin")" style="color:black;font-weight:bold;font-size:18px; font-family:'Segoe UI Symbol'">Panele Git</a>
+                                    }
+
+                                </form>
+
+
+                            </li>
 
 
                             <div class="up-item">
@@ -83,6 +104,7 @@
             <div class="container">
                 <!-- menu -->
                 <ul class="main-menu">
+
                     <li><a href="@Url.RouteUrl("Home")">ANASAYFA</a></li>
                     <li>
                         <a href="@Url.RouteUrl("Department1")">Bilgisayar Mühendisliği</a>
@@ -288,7 +310,8 @@
                 <li><a href="#">Web Programlama</a></li>
             
             </ul>
-            <div class="row">
+            </div>
+            @*<div class="row">*@
                 @*<div class="col-lg-3 col-sm-6">
                     <div class="product-item">
                         <div class="pi-pic">

@@ -14,7 +14,7 @@ namespace Ebook1
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(name: "Signout", url: "Signout", defaults: new { controller = "Login1", action = "Signout" });
-            routes.MapRoute(name: "LoginK", url: " /Login1/LoginK", defaults: new { controller = "Login1", action = "LoginK" });
+            routes.MapRoute(name: "LoginK", url: "LoginK", defaults: new { controller = "Login1", action = "LoginK" });
             routes.MapRoute(name: "LoginG", url: "LoginG", defaults: new { controller = "Login1", action = "LoginG" });
             routes.MapRoute(name: "ComputerEngineer", url: "ComputerEngineer", defaults: new { controller = "Department", action = "ComputerEngineer" });
             routes.MapRoute(name: "Algoritmalar", url: "Algoritmalar", defaults: new { controller = "Department", action = "Algoritmalar" });

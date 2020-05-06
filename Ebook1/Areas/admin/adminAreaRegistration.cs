@@ -40,6 +40,8 @@ namespace Ebook1.Areas.admin
             #region Subject1
             context.MapRoute(name: "UserList", url: "admin/kullanıcı", defaults: new { controller = "User", action = "UserList" });
             context.MapRoute(name: "NewUser", url: "admin/kullanıcı/yeni", defaults: new { controller = "User", action = "NewUser" });
+            context.MapRoute(name: "DeleteUser", url: "admin/kullanıcı/sil", defaults: new { controller = "User", action = "DeleteUser" });
+            context.MapRoute(name: "EditUser", url: "admin/kullanıcı/güncelle", defaults: new { controller = "User", action = "EditUser" });
 
             #endregion
 
@@ -48,6 +50,7 @@ namespace Ebook1.Areas.admin
                 "admin/{controller}/{action}/{id}",
                 new { controller = "Sayfa", action = "Anasayfa", id = UrlParameter.Optional }
             );
+
             context.MapRoute("admin", "admin", new { controller = "Sayfa", action = "Anasayfa" });
             context.MapRoute("Register", "Register", new { controller = "User1", action = "NewUser" });
             context.MapRoute("NewQuestion", "NewQuestion", new { controller = "Question1", action = "NewQuestion" });

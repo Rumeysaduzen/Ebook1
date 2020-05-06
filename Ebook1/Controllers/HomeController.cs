@@ -9,7 +9,8 @@ namespace Ebook1.Controllers
 {
     public class HomeController : Controller
     {
-        Ebook1Context db = new Ebook1Context();
+        EBook1DbEntities2 db = new EBook1DbEntities2();
+      
         // GET: Home
         public ActionResult Index()
         {

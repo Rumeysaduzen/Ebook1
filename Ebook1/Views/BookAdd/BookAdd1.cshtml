@@ -21,7 +21,7 @@
       
 
 
-        @*<label class="control-label col-md-3 col-sm-3 col-xs-12" for="LessonName">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LessonName">
             Bölüm Adı <span class="required">:</span>
         </label>
 
@@ -34,7 +34,7 @@
                 }
 
             </select>
-        </div>*@
+        </div>
 
 
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LessonName">
@@ -44,10 +44,10 @@
 
         <div class="col-md-6 col-sm-6 col-xs-12">
             <select id="UserId" name="UserName" class="form-control">
-                @*@foreach (var item in ViewBag.Lesson)
+                @foreach (var item in ViewBag.Lesson)
                 {
                     <option value="@item.ID">@item.LessonName</option>
-                }*@
+                }
 
             </select>
         </div>
@@ -81,7 +81,7 @@
                 <br />
 
                 <button type="submit" class="btn btn-success" href="@Url.RouteUrl("bookAdd1")">Ekle</button>
-            </form>
+      
         </div>
 
 
